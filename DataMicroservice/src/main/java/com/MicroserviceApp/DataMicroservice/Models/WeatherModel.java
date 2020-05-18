@@ -13,8 +13,6 @@ public abstract class WeatherModel {
     public Date date;
     public int value;
 
-    public abstract Class getType();
-
     public String getId() {
         return id;
     }

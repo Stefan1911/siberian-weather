@@ -5,8 +5,4 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Wind")
 public class WindModel extends WeatherModel{
 
-    @Override
-    public Class getType() {
-        return this.getClass();
-    }
 }

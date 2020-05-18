@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IWeatherRepository<T> {
     public T add(T object);
-    public List get(Date fromDate,Date toDate);
+    public List<T> get(int value,Class<T> type);
     public List getAll(Class<T> type);
 
   /*extends MongoRepository<T, String>, QuerydslPredicateExecutor<T> */

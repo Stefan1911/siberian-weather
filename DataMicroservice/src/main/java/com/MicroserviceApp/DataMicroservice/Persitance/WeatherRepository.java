@@ -4,6 +4,8 @@ import com.MicroserviceApp.DataMicroservice.Context.IWeatherRepository;
 import com.MicroserviceApp.DataMicroservice.Models.WeatherModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Component;
 
@@ -17,18 +19,19 @@ public class WeatherRepository <T extends WeatherModel> implements IWeatherRepos
     @Autowired
     MongoTemplate mongoTemplate;
 
+    public WeatherRepository() {
+    }
+
     @Override
     public T add(T object) {
         mongoTemplate.save(object);
         return object;
     }
 
-    public WeatherRepository() {
-    }
-
     @Override
-    public List get(Date fromDate, Date toDate) {
-        return null;
+    public List<T> get(int value , Class<T> type) {
+        BasicQuery query1 = new BasicQuery("{ 'value': "+value+" }");
+        return mongoTemplate.find(query1,type);
     }
 
     @Override
