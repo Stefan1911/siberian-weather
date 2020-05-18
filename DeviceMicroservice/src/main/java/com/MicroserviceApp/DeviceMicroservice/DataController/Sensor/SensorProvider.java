@@ -1,4 +1,4 @@
-package com.MicroserviceApp.DeviceMicroservice.DataController;
+package com.MicroserviceApp.DeviceMicroservice.DataController.Sensor;
 
 import com.MicroserviceApp.DeviceMicroservice.DataController.Sensor.ISensor;
 import com.MicroserviceApp.DeviceMicroservice.DataController.Sensor.RandomSensor;
