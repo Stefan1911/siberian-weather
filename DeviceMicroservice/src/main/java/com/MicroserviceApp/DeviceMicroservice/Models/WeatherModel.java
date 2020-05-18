@@ -9,8 +9,12 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Temperature {
-
+public class WeatherModel {
     private Date date;
     private int value;
+
+    public WeatherModel(int value,Date date) {
+        this.date = date;
+        this.value = value;
+    }
 }

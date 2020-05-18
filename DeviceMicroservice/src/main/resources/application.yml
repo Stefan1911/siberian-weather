@@ -2,5 +2,8 @@ spring:
   cloud:
     stream:
       bindings:
-        output:
+
+        TemperatureOutput:
           destination: temperatureTopic
+        WindOutput:
+          destination: windTopic
