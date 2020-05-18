@@ -33,11 +33,7 @@ public class WeatherRepository <T extends WeatherModel> implements IWeatherRepos
 
     @Override
     public List getAll(Class<T> type) {
-      /* Query query = new Query();
-        query.addCriteria(Criteria.where("salary").lt(maxSalary).gt(minSalary)); */
-
         return mongoTemplate.findAll(type);
-
     }
 
 }

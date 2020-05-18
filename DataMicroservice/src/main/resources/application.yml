@@ -2,5 +2,18 @@ spring:
   cloud:
     stream:
       bindings:
-        input:
+        TemperatureInput:
           destination: temperatureTopic
+        VisibilityInput:
+            destination: visibilityTopic
+        WindInput:
+              destination: windTopic
+        HumidityInput:
+          destination: humidityTopic
+        WatelLevelInput:
+            destination: waterLevelTopic
+        PressureInput:
+            destination: pressureTopic
+        PrecipitationInput:
+          destination: precipitationTopic
+
