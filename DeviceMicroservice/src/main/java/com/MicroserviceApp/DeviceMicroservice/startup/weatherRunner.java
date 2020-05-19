@@ -41,7 +41,12 @@ public class weatherRunner implements ApplicationRunner {
     }
 
     public enum WeatherStats{
-        TEMPERATURE,
-        WIND
+        TEMPERATURE("temperature"),
+        WIND("wind");
+
+        public final String label;
+        private WeatherStats(String label) {
+            this.label = label;
+        }
     }
 }

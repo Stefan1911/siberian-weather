@@ -9,7 +9,7 @@ public class RandomSensor implements ISensor {
 
     Random random = new Random();
     @Override
-    public int nextValue() {
-        return this.random.nextInt();
+    public Double nextValue() {
+        return this.random.nextDouble();
     }
 }

@@ -13,6 +13,8 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -51,7 +53,12 @@ public class DataController {
         return new TimerTask() {
             @Override
             public void run() {
-                int value = sensorProvider.getSensor(stat).nextValue();
+                Double value = null;
+                try {
+                    value = sensorProvider.getSensor(stat).nextValue();
+                } catch (IOException | ParseException e) {
+                    e.printStackTrace();
+                }
                 WeatherModel model = new WeatherModel(value,new Date());
                 channelProviderFactory
                         .getProvider(stat)

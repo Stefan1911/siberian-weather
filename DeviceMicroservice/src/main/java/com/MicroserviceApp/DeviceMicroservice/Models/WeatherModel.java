@@ -11,9 +11,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class WeatherModel {
     private Date date;
-    private int value;
+    private double value;
 
-    public WeatherModel(int value,Date date) {
+    public WeatherModel(double value,Date date) {
         this.date = date;
         this.value = value;
     }
