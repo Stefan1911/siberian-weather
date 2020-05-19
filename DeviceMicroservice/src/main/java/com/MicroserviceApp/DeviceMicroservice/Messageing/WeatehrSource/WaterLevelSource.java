@@ -3,9 +3,9 @@ package com.MicroserviceApp.DeviceMicroservice.Messageing.WeatehrSource;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 
-public interface TemperatureSource {
-    String OUTPUT = "TemperatureOutput";
+public interface WaterLevelSource {
+    String OUTPUT = "WaterLevelOutput";
 
-    @Output(TemperatureSource.OUTPUT)
+    @Output(WaterLevelSource.OUTPUT)
     MessageChannel output();
 }

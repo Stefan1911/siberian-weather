@@ -1,17 +1,10 @@
 package com.MicroserviceApp.DeviceMicroservice.DataController;
 
-import com.MicroserviceApp.DeviceMicroservice.DataController.Sensor.ISensor;
 import com.MicroserviceApp.DeviceMicroservice.DataController.Sensor.SensorProvider;
 import com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProviderFactory;
-import com.MicroserviceApp.DeviceMicroservice.Messageing.IChannelProvider;
 import com.MicroserviceApp.DeviceMicroservice.Models.WeatherModel;
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.text.ParseException;

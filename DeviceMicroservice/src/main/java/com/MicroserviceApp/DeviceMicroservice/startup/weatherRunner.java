@@ -42,7 +42,12 @@ public class weatherRunner implements ApplicationRunner {
 
     public enum WeatherStats{
         TEMPERATURE("temperature"),
-        WIND("wind");
+        WIND("wind"),
+        WATERLEVEL("water_level"),
+        HUMIDITY("humidity"),
+        VISIBILITY("visibility"),
+        PRESSURE("pressure"),
+        PRECIPITATION("precipitation");
 
         public final String label;
         private WeatherStats(String label) {

@@ -18,8 +18,6 @@ public class SensorProvider {
         for (weatherRunner.WeatherStats stat : weatherRunner.WeatherStats.values()){
             this.hashMap.put(stat,new FileSensor(stat));
         }
-//        this.hashMap.put(weatherRunner.WeatherStats.TEMPERATURE,new FileSensor(weatherRunner.WeatherStats.TEMPERATURE));
-//        this.hashMap.put(weatherRunner.WeatherStats.WIND,new FileSensor(weatherRunner.WeatherStats.WIND));
     }
 
     public ISensor getSensor(weatherRunner.WeatherStats stat){

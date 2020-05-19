@@ -7,3 +7,13 @@ spring:
           destination: temperatureTopic
         WindOutput:
           destination: windTopic
+        WaterLevelOutput:
+          destination: waterLevelTopic
+        PrecipitationOutput:
+          destination: precipitationTopic
+        HumidityOutput:
+          destination: humidityTopic
+        VisibilityOutput:
+          destination: visibilityTopic
+        PressureOutput:
+          destination: pressureTopic
