@@ -3,10 +3,12 @@ package com.MicroserviceApp.DeviceMicroservice.DataController.Sensor;
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import com.opencsv.CSVReader;
 import org.apache.kafka.common.protocol.types.Field;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -16,8 +18,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class FileSensor implements ISensor {
+    String fileName = "weather.csv";
+    @Autowired
+    ResourceLoader resourceLoader;
 
-    String filePath = "/home/stefan/WorkSpace/siberian-weather/DeviceMicroservice/src/main/resources/weather.csv";
     int columnNumber;
     weatherRunner.WeatherStats stat;
     DecimalFormat decimalFormat = new DecimalFormat();
@@ -43,11 +47,12 @@ public class FileSensor implements ISensor {
 
 
     void readerSetup() throws IOException {
+        Resource resource = new ClassPathResource(this.fileName);
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setDecimalSeparator(this.decimalSeparator);
         symbols.setGroupingSeparator(' ');
         decimalFormat.setDecimalFormatSymbols(symbols);
-        reader = new CSVReader(new FileReader(filePath));
+        reader = new CSVReader(new FileReader(resource.getFile()));
         this.columnNumber = this.getColumnNumber();
     }
 
