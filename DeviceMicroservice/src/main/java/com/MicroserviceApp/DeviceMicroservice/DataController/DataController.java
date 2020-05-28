@@ -4,7 +4,9 @@ import com.MicroserviceApp.DeviceMicroservice.DataController.Sensor.SensorProvid
 import com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProviderFactory;
 import com.MicroserviceApp.DeviceMicroservice.Models.WeatherModel;
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -12,26 +14,27 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+@Component
 public class DataController {
     private Timer timer;
     private TimerTask task;
-    private weatherRunner.WeatherStats stat;
+    private weatherRunner.WeatherAttributeType stat;
     private ChannelProviderFactory channelProviderFactory;
     private SensorProvider sensorProvider;
     private DataControllerSettings dataControllerSettings;
 
-    public DataController(weatherRunner.WeatherStats stat, ChannelProviderFactory channelProviderFactory, SensorProvider sensorProvider, DataControllerSettings dataControllerSettings) {
-        this.stat = stat;
+    @Autowired
+    public DataController(ChannelProviderFactory channelProviderFactory, SensorProvider sensorProvider, DataControllerSettings dataControllerSettings) {
         this.channelProviderFactory = channelProviderFactory;
         this.sensorProvider = sensorProvider;
         this.dataControllerSettings = dataControllerSettings;
     }
 
     public void startReading(){
+        this.stat = dataControllerSettings.getValueType();
         this.timer = new Timer();
         this.task = this.getTask();
-        this.timer.schedule(this.task, 0, this.dataControllerSettings.getStat(this.stat));
+        this.timer.schedule(this.task, 0, this.dataControllerSettings.getReadRate());
     }
     public  void  stopReading(){
         this.timer.cancel();

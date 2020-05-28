@@ -2,36 +2,32 @@ package com.MicroserviceApp.DeviceMicroservice.DataController;
 
 
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-
 @Component
-@Getter @Setter
 public class DataControllerSettings {
-    private HashMap<weatherRunner.WeatherStats,Integer> map;
+    private Integer readRate;
+    private weatherRunner.WeatherAttributeType valueType;
 
-    public HashMap<weatherRunner.WeatherStats, Integer> getMap() {
-        return map;
+    public Integer getReadRate() {
+        return readRate;
     }
 
-    public void setMap(HashMap<weatherRunner.WeatherStats, Integer> map) {
-        this.map = map;
+    public void setReadRate(Integer readRate) {
+        this.readRate = readRate;
+    }
+
+    public weatherRunner.WeatherAttributeType getValueType() {
+        return valueType;
+    }
+
+    public void setValueType(weatherRunner.WeatherAttributeType valueType) {
+        this.valueType = valueType;
     }
 
     public DataControllerSettings() {
-        this.map = new HashMap<weatherRunner.WeatherStats, Integer>();
-        for(weatherRunner.WeatherStats stat : weatherRunner.WeatherStats.values()){
-            this.map.put(stat,1000);
-        }
+        this.readRate = 1000; // default readRate
+        this.valueType = weatherRunner.WeatherAttributeType.TEMPERATURE; // default valueType
     }
 
-    public int getStat(weatherRunner.WeatherStats stat){
-        return this.map.get(stat);
-    }
-    public void setStat(weatherRunner.WeatherStats stat,Integer value){
-        this.map.put(stat,value);
-    };
 }

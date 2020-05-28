@@ -18,23 +18,24 @@ public class TemperatureController {
     @Autowired
     weatherRunner runner;
     @GetMapping
-    public HashMap getConfig(){
-        return dataControllerSettings.getMap();
+    public DataControllerSettings getConfig(){
+        return dataControllerSettings;
     }
 
     @PostMapping()
-    public ResponseEntity<HashMap<weatherRunner.WeatherStats, Integer>> post(@RequestBody HashMap<weatherRunner.WeatherStats,Integer> map){
-        for(weatherRunner.WeatherStats stat : weatherRunner.WeatherStats.values()){
-            if(!map.containsKey(stat)){
-                return new ResponseEntity<HashMap<weatherRunner.WeatherStats,Integer>>(HttpStatus.BAD_REQUEST);
-            }
-            if(map.get(stat) == null){
-                return new ResponseEntity<HashMap<weatherRunner.WeatherStats,Integer>>(HttpStatus.BAD_REQUEST);
-            }
+    public ResponseEntity<DataControllerSettings> post(@RequestBody DataControllerSettings settings){
+        if(settings.getReadRate() == null || settings.getReadRate() <= 0){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        this.dataControllerSettings.setMap(map);
-        this.runner.restartAllDataControllers();
-        return new ResponseEntity<>(map,HttpStatus.OK);
+        if(settings.getValueType() == null ){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        this.dataControllerSettings.setReadRate(settings.getReadRate());
+        this.dataControllerSettings.setValueType(settings.getValueType());
+        this.runner.restartDataController();
+        return new ResponseEntity<>(this.dataControllerSettings,HttpStatus.OK);
 
     }
+
+//    || weatherRunner.WeatherAttributeType.contains(settings.getValueType())
 }

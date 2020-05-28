@@ -2,7 +2,6 @@ package com.MicroserviceApp.DeviceMicroservice.DataController.Sensor;
 
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import com.opencsv.CSVReader;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -11,11 +10,9 @@ import org.springframework.core.io.ResourceLoader;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class FileSensor implements ISensor {
     String fileName = "weather.csv";
@@ -23,17 +20,17 @@ public class FileSensor implements ISensor {
     ResourceLoader resourceLoader;
 
     int columnNumber;
-    weatherRunner.WeatherStats stat;
+    weatherRunner.WeatherAttributeType stat;
     DecimalFormat decimalFormat = new DecimalFormat();
     char decimalSeparator;
     CSVReader reader;
 
-    public FileSensor(weatherRunner.WeatherStats stat) throws IOException {
+    public FileSensor(weatherRunner.WeatherAttributeType stat) throws IOException {
         this.stat = stat;
         this.decimalSeparator = ',';
         this.readerSetup();
     }
-    public FileSensor(weatherRunner.WeatherStats stat, char decimalSeparator) throws IOException {
+    public FileSensor(weatherRunner.WeatherAttributeType stat, char decimalSeparator) throws IOException {
         this.stat = stat;
         this.decimalSeparator = decimalSeparator;
         this.readerSetup();

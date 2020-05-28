@@ -15,43 +15,47 @@ import java.util.HashMap;
 public class weatherRunner implements ApplicationRunner {
 
     @Autowired
-    private ChannelProviderFactory channelProviderFactory;
-    @Autowired
-    private SensorProvider sensorProvider;
-    @Autowired
-    private DataControllerSettings dataControllerSettings;
+    private DataController dataController;
 
-    private HashMap<WeatherStats,DataController> dataControllerMap = new HashMap<>();
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        for (WeatherStats stat : WeatherStats.values()){
-            DataController controller = new DataController(stat,this.channelProviderFactory,this.sensorProvider,this.dataControllerSettings);
-            this.dataControllerMap.put(stat,controller);
-            controller.startReading();
-        }
+        this.dataController.startReading();
     }
 
-    public DataController getDataController(WeatherStats stat){
-        return this.dataControllerMap.get(stat);
+    public DataController getDataController(WeatherAttributeType stat){
+        return this.dataController;
     }
-    public void restartAllDataControllers(){
-        for (DataController data : this.dataControllerMap.values()){
-            data.restartReading();
-        }
+    public void restartDataController(){
+        this.dataController.restartReading();
+    }
+    public void startDataController(){
+        this.dataController.startReading();
+    }
+    public void stopDataController(){
+        this.dataController.stopReading();
     }
 
-    public enum WeatherStats{
+    public enum WeatherAttributeType {
         TEMPERATURE("temperature"),
         WIND("wind"),
-        WATERLEVEL("water_level"),
+        WATER_LEVEL("water_level"),
         HUMIDITY("humidity"),
         VISIBILITY("visibility"),
         PRESSURE("pressure"),
         PRECIPITATION("precipitation");
 
         public final String label;
-        private WeatherStats(String label) {
+        private WeatherAttributeType(String label) {
             this.label = label;
+        }
+
+        public static boolean contains(String value){
+            for (WeatherAttributeType c : WeatherAttributeType.values()) {
+                if (c.label.equals(value.toLowerCase())) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

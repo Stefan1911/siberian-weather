@@ -16,7 +16,7 @@ class DeviceMicroserviceApplicationTests {
 
 	@Test
 	void contextLoads() throws IOException, ParseException {
-		FileSensor fileSensor = new FileSensor(weatherRunner.WeatherStats.WIND);
+		FileSensor fileSensor = new FileSensor(weatherRunner.WeatherAttributeType.WIND);
 		Double firstValue = fileSensor.nextValue();
 		Double secondValue = fileSensor.nextValue();
 		assertNotNull(firstValue);
