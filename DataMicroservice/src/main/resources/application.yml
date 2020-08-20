@@ -16,4 +16,6 @@ spring:
             destination: pressureTopic
         PrecipitationInput:
           destination: precipitationTopic
+        BatchOutput:
+          destination: batchOutput
 
