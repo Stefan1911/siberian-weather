@@ -1,28 +1,23 @@
 package com.MicroserviceApp.DeviceMicroservice.startup;
 
-import com.MicroserviceApp.DeviceMicroservice.DataController.DataController;
-import com.MicroserviceApp.DeviceMicroservice.DataController.DataControllerSettings;
-import com.MicroserviceApp.DeviceMicroservice.DataController.Sensor.SensorProvider;
-import com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProviderFactory;
+import com.MicroserviceApp.DeviceMicroservice.DataCollector.DataCollector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-
 @Component
 public class weatherRunner implements ApplicationRunner {
 
     @Autowired
-    private DataController dataController;
+    private DataCollector dataController;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         this.dataController.startReading();
     }
 
-    public DataController getDataController(WeatherAttributeType stat){
+    public DataCollector getDataController(WeatherAttributeType stat){
         return this.dataController;
     }
     public void restartDataController(){

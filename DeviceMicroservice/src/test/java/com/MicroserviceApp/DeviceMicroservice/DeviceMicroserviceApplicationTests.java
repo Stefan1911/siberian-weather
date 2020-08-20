@@ -1,6 +1,6 @@
 package com.MicroserviceApp.DeviceMicroservice;
 
-import com.MicroserviceApp.DeviceMicroservice.DataController.Sensor.FileSensor;
+import com.MicroserviceApp.DeviceMicroservice.DataCollector.Sensor.FileSensor;
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
