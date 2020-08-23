@@ -1,7 +1,5 @@
 package com.MicroserviceApp.DeviceMicroservice.Models.Enumerations;
 
-import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
-
 public enum WeatherAttributeType {
   TEMPERATURE("temperature"),
   WIND("wind"),

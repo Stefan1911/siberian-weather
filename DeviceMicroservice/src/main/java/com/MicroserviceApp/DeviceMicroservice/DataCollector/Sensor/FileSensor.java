@@ -1,7 +1,6 @@
 package com.MicroserviceApp.DeviceMicroservice.DataCollector.Sensor;
 
 import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
-import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;

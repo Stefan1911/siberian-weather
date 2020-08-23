@@ -1,7 +1,6 @@
 package com.MicroserviceApp.DeviceMicroservice.DataCollector.Sensor;
 
 import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
-import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

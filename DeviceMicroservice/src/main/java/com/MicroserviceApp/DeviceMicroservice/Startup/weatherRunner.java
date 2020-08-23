@@ -1,4 +1,4 @@
-package com.MicroserviceApp.DeviceMicroservice.startup;
+package com.MicroserviceApp.DeviceMicroservice.Startup;
 
 import com.MicroserviceApp.DeviceMicroservice.ActuatorHandler.Models.ActuatorType;
 import com.MicroserviceApp.DeviceMicroservice.DataCollector.DataCollector;
