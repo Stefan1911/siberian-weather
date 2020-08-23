@@ -2,7 +2,6 @@ spring:
   cloud:
     stream:
       bindings:
-
         TemperatureOutput:
           destination: temperatureTopic
         WindOutput:
@@ -17,3 +16,5 @@ spring:
           destination: visibilityTopic
         PressureOutput:
           destination: pressureTopic
+        ServiceRegistrationOutput:
+          destination: registrationTopic

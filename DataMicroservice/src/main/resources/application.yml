@@ -18,4 +18,5 @@ spring:
           destination: precipitationTopic
         BatchOutput:
           destination: batchOutput
-
+        ServiceRegistrationOutput:
+          destination: registrationTopic

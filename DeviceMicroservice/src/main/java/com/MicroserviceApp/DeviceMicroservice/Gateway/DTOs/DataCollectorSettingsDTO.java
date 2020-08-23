@@ -1,4 +1,4 @@
-package com.MicroserviceApp.DeviceMicroservice.Gateway.Controllers.DTOs;
+package com.MicroserviceApp.DeviceMicroservice.Gateway.DTOs;
 
 import lombok.Getter;
 import lombok.Setter;

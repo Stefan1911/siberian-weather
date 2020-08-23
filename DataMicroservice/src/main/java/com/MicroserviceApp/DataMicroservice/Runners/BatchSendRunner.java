@@ -2,7 +2,11 @@ package com.MicroserviceApp.DataMicroservice.Runners;
 
 import com.MicroserviceApp.DataMicroservice.Context.IBatchRepository;
 import com.MicroserviceApp.DataMicroservice.Messageing.ChannelProviders.BatchChannelProvider;
+import com.MicroserviceApp.DataMicroservice.Messageing.ServiceRegistrationChannelProvider;
+import com.MicroserviceApp.DataMicroservice.Models.ServiceInfo;
+import com.MicroserviceApp.DataMicroservice.Models.ServiceType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -15,6 +19,13 @@ import java.util.*;
 @EnableBinding(BatchChannelProvider.class)
 public class BatchSendRunner implements ApplicationRunner {
 
+
+    @Value("${server.port}")
+    private int servicePort;
+    @Value("${server.ip_address}")
+    private String serviceIpAddress;
+    @Autowired
+    private ServiceRegistrationChannelProvider serviceRegistrationChannelProvider;
     @Autowired
     IBatchRepository batchRepository;
     @Autowired
@@ -28,6 +39,7 @@ public class BatchSendRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        registerService();
         int batchPeriod = Integer.parseInt(env.getProperty("app.batchPeriod"));
         lastSend = new Date();
         this.timer = new Timer();
@@ -46,4 +58,15 @@ public class BatchSendRunner implements ApplicationRunner {
             }
         };
     }
+
+    private void registerService(){
+        ServiceInfo serviceInfo = ServiceInfo.builder()
+            .ipAddress(serviceIpAddress)
+            .port(servicePort)
+            .serviceType(ServiceType.DATA_SERVICE)
+            .build();
+
+        serviceRegistrationChannelProvider.getChanel().send(MessageBuilder.withPayload(serviceInfo).build());
+    }
+
 }

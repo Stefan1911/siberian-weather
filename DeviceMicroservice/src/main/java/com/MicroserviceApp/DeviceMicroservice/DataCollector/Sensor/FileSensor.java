@@ -1,5 +1,6 @@
 package com.MicroserviceApp.DeviceMicroservice.DataCollector.Sensor;
 
+import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,17 @@ public class FileSensor implements ISensor {
     ResourceLoader resourceLoader;
 
     int columnNumber;
-    weatherRunner.WeatherAttributeType stat;
+    WeatherAttributeType stat;
     DecimalFormat decimalFormat = new DecimalFormat();
     char decimalSeparator;
     CSVReader reader;
 
-    public FileSensor(weatherRunner.WeatherAttributeType stat) throws IOException {
+    public FileSensor(WeatherAttributeType stat) throws IOException {
         this.stat = stat;
         this.decimalSeparator = ',';
         this.readerSetup();
     }
-    public FileSensor(weatherRunner.WeatherAttributeType stat, char decimalSeparator) throws IOException {
+    public FileSensor(WeatherAttributeType stat, char decimalSeparator) throws IOException {
         this.stat = stat;
         this.decimalSeparator = decimalSeparator;
         this.readerSetup();

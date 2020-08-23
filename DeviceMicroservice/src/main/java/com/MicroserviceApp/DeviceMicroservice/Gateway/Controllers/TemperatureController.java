@@ -1,7 +1,7 @@
 package com.MicroserviceApp.DeviceMicroservice.Gateway.Controllers;
 
 import com.MicroserviceApp.DeviceMicroservice.DataCollector.DataCollectorSettings;
-import com.MicroserviceApp.DeviceMicroservice.Gateway.Controllers.DTOs.DataCollectorSettingsDTO;
+import com.MicroserviceApp.DeviceMicroservice.Gateway.DTOs.DataCollectorSettingsDTO;
 import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
