@@ -1,16 +1,15 @@
-package com.MicroserviceApp.CommandService.Startup;
+package com.MicroserviceApp.CommandService.ServiceRegistration;
 
-import com.MicroserviceApp.CommandService.Messageing.ChannelProviders.ServiceRegistrationChannelProvider;
-import com.MicroserviceApp.CommandService.Models.ServiceInfo;
-import com.MicroserviceApp.CommandService.Models.ServiceType;
+import com.MicroserviceApp.CommandService.ServiceRegistration.Messageing.ChannelProviders.ServiceRegistrationChannelProvider;
+import com.MicroserviceApp.CommandService.ServiceRegistration.Models.ServiceInfo;
+import com.MicroserviceApp.CommandService.ServiceRegistration.Models.ServiceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
-public class ServiceRegistration {
+public class ServiceRegistration implements IServiceRegister {
 
   @Autowired
   private ServiceRegistrationChannelProvider serviceRegistrationChannelProvider;
@@ -19,7 +18,7 @@ public class ServiceRegistration {
   @Value("${server.ip_address}")
   private String serviceIpAddress;
 
-
+  @Override
   public void registerService(ServiceType serviceType){
     ServiceInfo serviceInfo = ServiceInfo.builder()
         .ipAddress(serviceIpAddress)

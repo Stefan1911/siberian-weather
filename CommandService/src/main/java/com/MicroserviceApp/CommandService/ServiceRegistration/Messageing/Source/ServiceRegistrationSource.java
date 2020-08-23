@@ -1,4 +1,4 @@
-package com.MicroserviceApp.CommandService.Messageing.Source;
+package com.MicroserviceApp.CommandService.ServiceRegistration.Messageing.Source;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;

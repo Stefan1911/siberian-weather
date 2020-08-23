@@ -1,4 +1,4 @@
-package com.MicroserviceApp.CommandService.Models;
+package com.MicroserviceApp.CommandService.ServiceRegistration.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
