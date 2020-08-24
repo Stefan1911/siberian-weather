@@ -7,7 +7,7 @@ spring:
         VisibilityInput:
             destination: visibilityTopic
         WindInput:
-              destination: windTopic
+            destination: windTopic
         HumidityInput:
           destination: humidityTopic
         WatelLevelInput:

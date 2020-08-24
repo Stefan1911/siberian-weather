@@ -1,4 +1,4 @@
-package com.MicroserviceApp.DeviceMicroservice.Messageing;
+package com.MicroserviceApp.DeviceMicroservice.Messaging;
 
 import org.springframework.messaging.MessageChannel;
 

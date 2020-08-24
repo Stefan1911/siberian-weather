@@ -1,6 +1,6 @@
-package com.MicroserviceApp.DeviceMicroservice.Messageing;
+package com.MicroserviceApp.DeviceMicroservice.Messaging;
 
-import com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProvider.*;
+import com.MicroserviceApp.DeviceMicroservice.Messaging.ChannelProvider.*;
 import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

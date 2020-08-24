@@ -1,7 +1,7 @@
 package com.MicroserviceApp.DeviceMicroservice.DataCollector;
 
 import com.MicroserviceApp.DeviceMicroservice.DataCollector.Sensor.SensorProvider;
-import com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProviderFactory;
+import com.MicroserviceApp.DeviceMicroservice.Messaging.ChannelProviderFactory;
 import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
 import com.MicroserviceApp.DeviceMicroservice.Models.WeatherModel;
 import org.springframework.beans.factory.annotation.Autowired;

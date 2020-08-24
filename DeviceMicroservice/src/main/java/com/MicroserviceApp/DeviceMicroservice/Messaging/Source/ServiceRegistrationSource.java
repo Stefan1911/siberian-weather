@@ -1,4 +1,4 @@
-package com.MicroserviceApp.CommandService.ServiceRegistration.Messageing.Source;
+package com.MicroserviceApp.DeviceMicroservice.Messaging.Source;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
@@ -8,4 +8,5 @@ public interface ServiceRegistrationSource {
 
   @Output(ServiceRegistrationSource.OUTPUT)
   MessageChannel output();
+
 }

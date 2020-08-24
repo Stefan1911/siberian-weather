@@ -1,6 +1,6 @@
 package com.MicroserviceApp.CommandService.ServiceRegistration;
 
-import com.MicroserviceApp.CommandService.ServiceRegistration.Messageing.ChannelProviders.ServiceRegistrationChannelProvider;
+import com.MicroserviceApp.CommandService.ServiceRegistration.Messageing.ServiceRegistrationChannelProvider;
 import com.MicroserviceApp.CommandService.ServiceRegistration.Models.ServiceInfo;
 import com.MicroserviceApp.CommandService.ServiceRegistration.Models.ServiceType;
 import org.springframework.beans.factory.annotation.Autowired;

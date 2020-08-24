@@ -2,7 +2,7 @@ package com.MicroserviceApp.DeviceMicroservice.Startup;
 
 import com.MicroserviceApp.DeviceMicroservice.ActuatorHandler.Models.ActuatorType;
 import com.MicroserviceApp.DeviceMicroservice.DataCollector.DataCollector;
-import com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProvider.ServiceRegistrationChannelProvider;
+import com.MicroserviceApp.DeviceMicroservice.Messaging.ChannelProvider.ServiceRegistrationChannelProvider;
 import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.ServiceType;
 import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
 import com.MicroserviceApp.DeviceMicroservice.Models.ServiceInfo;

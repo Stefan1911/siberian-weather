@@ -1,4 +1,4 @@
-package com.MicroserviceApp.DeviceMicroservice.Messageing.WeatehrSource;
+package com.MicroserviceApp.DeviceMicroservice.Messaging.Source;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;

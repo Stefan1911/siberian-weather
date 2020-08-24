@@ -1,7 +1,7 @@
-package com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProvider;
+package com.MicroserviceApp.DeviceMicroservice.Messaging.ChannelProvider;
 
-import com.MicroserviceApp.DeviceMicroservice.Messageing.IChannelProvider;
-import com.MicroserviceApp.DeviceMicroservice.Messageing.WeatehrSource.ServiceRegistrationSource;
+import com.MicroserviceApp.DeviceMicroservice.Messaging.IChannelProvider;
+import com.MicroserviceApp.DeviceMicroservice.Messaging.Source.ServiceRegistrationSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.MessageChannel;
