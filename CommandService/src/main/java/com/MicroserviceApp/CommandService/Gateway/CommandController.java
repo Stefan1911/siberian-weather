@@ -1,10 +1,12 @@
 package com.MicroserviceApp.CommandService.Gateway;
 
 import com.MicroserviceApp.CommandService.CommandHandler.Contracts.ICommandHandler;
+import com.MicroserviceApp.CommandService.CommandHandler.Exceptions.NoActuatorInTheSystemException;
 import com.MicroserviceApp.CommandService.CommandHandler.Models.Command;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,11 @@ public class CommandController {
   public ResponseEntity executeCommand(@RequestBody Command command){
     commandHandler.handleCommand(command);
     return new ResponseEntity(HttpStatus.ACCEPTED);
+  }
+
+  @GetMapping
+  public String getCommands() throws NoActuatorInTheSystemException {
+    return commandHandler.getActuatorInfo();
   }
 
 }
