@@ -20,7 +20,7 @@ public class PrecipitationListener {
     IWeatherRepository<PrecipitationModel> precipitationRepository;
 
     @StreamListener(PrecipitationChannelProvider.INPUT)
-    public void log(PrecipitationModel precipitationModel) {
+    public void log(PrecipitationModel precipitationModel) throws ClassNotFoundException {
         logger.info("precipitation has arrived :  " + precipitationModel.value);
         precipitationRepository.add(precipitationModel);
     }

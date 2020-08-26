@@ -7,10 +7,10 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import java.util.Date;
 import java.util.List;
 
-public interface IWeatherRepository<T> {
-    public T add(T object);
-    public List<T> get(int value,Class<T> type);
-    public List getAll(Class<T> type);
+public interface IWeatherRepository<T extends WeatherModel>{
+    public T add(T weather);
+    public List get(int value,Class type);
+    public List getByDate(Date fromDate, Date toDate,Class type);
+    public List getAll(Class type);
 
-  /*extends MongoRepository<T, String>, QuerydslPredicateExecutor<T> */
-}
+  }

@@ -19,10 +19,10 @@ import org.springframework.messaging.MessageChannel;
 public class VisibilityListener {
     private Logger logger = LoggerFactory.getLogger(DataMicroserviceApplication.class);
     @Autowired
-    IWeatherRepository<VisibilityModel>  visibilityRepository;
+    IWeatherRepository<VisibilityModel> visibilityRepository;
 
     @StreamListener(VisibilityChannelProvider.INPUT)
-    public void log(VisibilityModel visibilityModel) {
+    public void log(VisibilityModel visibilityModel) throws ClassNotFoundException {
         logger.info("visibility has arrived :  " + visibilityModel.value);
         visibilityRepository.add(visibilityModel);
     }

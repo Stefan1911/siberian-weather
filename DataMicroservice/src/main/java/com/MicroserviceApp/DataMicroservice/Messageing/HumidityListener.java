@@ -19,7 +19,7 @@ public class HumidityListener {
         IWeatherRepository<HumidityModel> humidityRepository;
 
         @StreamListener(HumidityChannelProvider.INPUT)
-        public void log(HumidityModel humidityModel) {
+        public void log(HumidityModel humidityModel) throws ClassNotFoundException {
             logger.info("humidity has arrived :  " + humidityModel.value);
             humidityRepository.add(humidityModel);
         }

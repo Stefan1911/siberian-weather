@@ -21,7 +21,7 @@ public class PressureListener {
     IWeatherRepository<PressureModel> pressureRepository;
 
     @StreamListener(PressureChannelProvider.INPUT)
-    public void log(PressureModel pressureModel) {
+    public void log(PressureModel pressureModel) throws ClassNotFoundException {
         pressureRepository.add(pressureModel);
         logger.info("pressure has arrived :  " + pressureModel.value);
     }

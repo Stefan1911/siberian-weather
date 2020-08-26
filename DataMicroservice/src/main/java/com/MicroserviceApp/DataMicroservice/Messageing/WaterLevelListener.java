@@ -20,7 +20,7 @@ public class WaterLevelListener {
     IWeatherRepository<WaterLevelModel> waterLevelRepository;
 
     @StreamListener(WaterLevelChannelProvider.INPUT)
-    public void log(WaterLevelModel waterLevelModel) {
+    public void log(WaterLevelModel waterLevelModel) throws ClassNotFoundException {
         logger.info("WaterLevel has arrived :  " + waterLevelModel.value);
         waterLevelRepository.add(waterLevelModel);
     }

@@ -19,7 +19,7 @@ public class TemperatureListener {
     IWeatherRepository<TemperatureModel> temperatureRepository;
 
     @StreamListener(TemperatureChannelProvider.INPUT)
-    public void log(TemperatureModel temperatureModel) {
+    public void log(TemperatureModel temperatureModel) throws ClassNotFoundException {
         logger.info("temperature has arrived :  " + temperatureModel.value);
         temperatureRepository.add(temperatureModel);
     }

@@ -20,7 +20,7 @@ public class WindListener {
     IWeatherRepository<WindModel> windRepository;
 
     @StreamListener(WindChannelProvider.INPUT)
-    public void log(WindModel windModel) {
+    public void log(WindModel windModel) throws ClassNotFoundException {
         logger.info("wind has arrived :  " + windModel.value);
         windRepository.add(windModel);
     }
