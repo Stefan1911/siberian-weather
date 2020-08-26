@@ -1,0 +1,30 @@
+.container {
+    width: 100vw;
+    height:100vh;
+    background-color: whitesmoke;
+  }
+  
+  .sidenav-content {
+    display: flex;
+    height: 100%;
+    // align-items: center;
+    // justify-content: center;
+  }
+  
+  .sidenav {
+    background-color: indigo;
+    color:white;
+    padding: 20px;
+  }
+
+  .sidenav-content--button{
+      color: indigo;
+      margin-left:0px;
+      height: 50px;
+      margin-top:40vh;
+  }
+
+  .weather-icon{
+      max-width: 50px;
+      max-height: 50px;
+  }
