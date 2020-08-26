@@ -1,0 +1,15 @@
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <div >
+            <img class="weather-icon"src="https://images-na.ssl-images-amazon.com/images/I/61nuuPxUvaL.png">
+            <h2>{{this.title}}</h2>
+        </div>
+        
+    </mat-drawer>
+    <div class="sidenav-content">
+      <button mat-button (click)="drawer.toggle()" class="sidenav-content--button">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  
+  </mat-drawer-container>

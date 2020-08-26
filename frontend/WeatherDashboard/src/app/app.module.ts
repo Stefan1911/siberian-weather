@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChartDashboardModule } from './chart-dashboard/chart-dashboard.module';
+import '@angular/compiler';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ChartDashboardModule,
+    AppRoutingModule,
+    BrowserAnimationsModule, 
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
