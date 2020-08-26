@@ -9,22 +9,39 @@ import { map, shareReplay } from "rxjs/operators";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  public isHandset$: Observable<boolean>;
   public title:string;
   public showCharts:boolean;
+  public showMicroservices:boolean;
+  public showNotifications:boolean;
+  
 
-  constructor( private readonly breakpointObserver: BreakpointObserver) {
-    this.showCharts=true;
+
+
+  constructor( ) {
+    this.disableAll();
     this.title="Siberia weather" 
-    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
+   }
+
+   public disableAll():void{
+    this.showCharts=false;
+    this.showMicroservices=false;
+    this.showNotifications=false;
    }
 
    public viewCharts():void {
+    this.disableAll();
      this.showCharts=!this.showCharts;
    }
+
+   public viewMicroservices():void {
+    this.disableAll();
+    this.showMicroservices=!this.showMicroservices;
+  }
+
+  public viewNotifications():void {
+    this.disableAll();
+    this.showNotifications=!this.showNotifications;
+  }
 
   ngOnInit(): void {
   }

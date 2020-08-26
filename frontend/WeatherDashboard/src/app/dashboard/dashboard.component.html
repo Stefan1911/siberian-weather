@@ -5,30 +5,41 @@
             <h1>{{this.title}}</h1>
         </div>
         <mat-nav-list >
-            <div >
-              <a mat-list-item  class="sidenav--element" routerLinkActive="active" routerLink="/charts" >
+            <div (click)="this.viewCharts()">
+              <a mat-list-item   
+              [ngClass]="{'sidenav--element': !this.showCharts, 'sidenav--element--selected': this.showCharts}" >
                 <mat-icon> insert_chart_outlined</mat-icon>
-                <span>Charts</span>
+                <span style="margin-left:10px">Charts</span>
               </a>
           </div>
-          <div (click)="this.viewCharts()">
+          <div (click)="this.viewNotifications()" >
             <a mat-list-item  
-            [ngClass]="{'sidenav--element': this.showCharts, 'sidenav--element--selected': !this.showCharts}" >
+            [ngClass]="{'sidenav--element': !this.showNotifications, 'sidenav--element--selected': this.showNotifications}" >
               <mat-icon>notifications_none</mat-icon>
-              <span>Notifications</span>
+              <span style="margin-left:10px">Notifications</span>
             </a>
         </div>
-        <div>
-          <a mat-list-item  class="sidenav--element" routerLinkActive="active" routerLink="/" >
+        <div (click)="this.viewMicroservices()">
+          <a mat-list-item  
+           [ngClass]="{'sidenav--element': !this.showMicroservices, 'sidenav--element--selected': this.showMicroservices}" >
             <mat-icon>list_alt</mat-icon>
-            <span>Microservices</span>
+            <span style="margin-left:10px">Microservices</span>
           </a>
       </div>
         </mat-nav-list>
     </mat-drawer>
     <div class="sidenav-content">
-      <div *ngIf="this.showCharts" >
+      <div *ngIf="!this.showCharts && !this.showMicroservices && !this.showNotifications">
+        <div class="container--title">Siberia weather station</div>
+          <img class ="background-image"
+          src="https://www.netclipart.com/pp/m/60-605078_cartoon-landscape-forest-snow-mountain-transprent-png-snow.png">
+      </div>
+      <div *ngIf="this.showCharts">
       <app-chart-dashboard></app-chart-dashboard>
+      </div>
+      <div *ngIf="this.showMicroservices">
+      </div>
+      <div *ngIf="this.showNotifications">
       </div>
     </div>
   </mat-drawer-container>
