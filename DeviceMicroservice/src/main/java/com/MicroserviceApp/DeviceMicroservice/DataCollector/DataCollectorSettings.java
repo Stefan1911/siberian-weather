@@ -1,9 +1,8 @@
 package com.MicroserviceApp.DeviceMicroservice.DataCollector;
 
 
-import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
-import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner.WeatherAttributeType;
-import lombok.Builder;
+
+import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +15,7 @@ public class DataCollectorSettings {
     @Getter @Setter
     private Integer batchSize;
     @Getter
-    private weatherRunner.WeatherAttributeType valueType;
+    private WeatherAttributeType valueType;
 
     public DataCollectorSettings(@Value("${collector.type}") WeatherAttributeType valueType) {
         readRate = 1000; // default readRate

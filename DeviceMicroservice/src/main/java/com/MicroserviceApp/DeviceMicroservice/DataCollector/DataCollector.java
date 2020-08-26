@@ -1,9 +1,9 @@
 package com.MicroserviceApp.DeviceMicroservice.DataCollector;
 
 import com.MicroserviceApp.DeviceMicroservice.DataCollector.Sensor.SensorProvider;
-import com.MicroserviceApp.DeviceMicroservice.Messageing.ChannelProviderFactory;
+import com.MicroserviceApp.DeviceMicroservice.Messaging.ChannelProviderFactory;
+import com.MicroserviceApp.DeviceMicroservice.Models.Enumerations.WeatherAttributeType;
 import com.MicroserviceApp.DeviceMicroservice.Models.WeatherModel;
-import com.MicroserviceApp.DeviceMicroservice.startup.weatherRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ import java.util.TimerTask;
 public class DataCollector {
     private Timer timer;
     private TimerTask task;
-    private weatherRunner.WeatherAttributeType stat;
+    private WeatherAttributeType stat;
     private ChannelProviderFactory channelProviderFactory;
     private SensorProvider sensorProvider;
     private DataCollectorSettings dataCollectorSettings;

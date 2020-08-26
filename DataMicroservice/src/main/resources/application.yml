@@ -7,7 +7,7 @@ spring:
         VisibilityInput:
             destination: visibilityTopic
         WindInput:
-              destination: windTopic
+            destination: windTopic
         HumidityInput:
           destination: humidityTopic
         WatelLevelInput:
@@ -18,4 +18,5 @@ spring:
           destination: precipitationTopic
         BatchOutput:
           destination: batchOutput
-
+        ServiceRegistrationOutput:
+          destination: registrationTopic
