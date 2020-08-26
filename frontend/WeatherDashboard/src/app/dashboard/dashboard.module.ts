@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule} from '@angular/material/button';
 import { DashboardComponent } from './dashboard.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-// import { LayoutModule } from "@angular/cdk/layout";
-// import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatIconModule} from '@angular/material/icon';
 import { RouterModule } from "@angular/router";
+import {MatListModule} from '@angular/material/list';
+import { ChartDashboardModule } from '../chart-dashboard/chart-dashboard.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -15,10 +15,9 @@ import { RouterModule } from "@angular/router";
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    // LayoutModule,
-    // FlexLayoutModule,
-    RouterModule
-    
+    RouterModule,
+    MatListModule,
+    ChartDashboardModule   
   ], 
   exports:[DashboardComponent]
 })

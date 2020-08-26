@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChartDashboardModule } from './chart-dashboard/chart-dashboard.module';
 import '@angular/compiler';
 import { DashboardModule } from './dashboard/dashboard.module';
 
@@ -13,7 +12,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
   ],
   imports: [
     BrowserModule,
-    ChartDashboardModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
     DashboardModule

@@ -1,15 +1,34 @@
 <mat-drawer-container class="container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side">
-        <div >
+    <mat-drawer #drawer class="sidenav" opened  mode="side">
+        <div class="sidenav--title">
             <img class="weather-icon"src="https://images-na.ssl-images-amazon.com/images/I/61nuuPxUvaL.png">
-            <h2>{{this.title}}</h2>
+            <h1>{{this.title}}</h1>
         </div>
-        
+        <mat-nav-list >
+            <div >
+              <a mat-list-item  class="sidenav--element" routerLinkActive="active" routerLink="/charts" >
+                <mat-icon> insert_chart_outlined</mat-icon>
+                <span>Charts</span>
+              </a>
+          </div>
+          <div (click)="this.viewCharts()">
+            <a mat-list-item  
+            [ngClass]="{'sidenav--element': this.showCharts, 'sidenav--element--selected': !this.showCharts}" >
+              <mat-icon>notifications_none</mat-icon>
+              <span>Notifications</span>
+            </a>
+        </div>
+        <div>
+          <a mat-list-item  class="sidenav--element" routerLinkActive="active" routerLink="/" >
+            <mat-icon>list_alt</mat-icon>
+            <span>Microservices</span>
+          </a>
+      </div>
+        </mat-nav-list>
     </mat-drawer>
     <div class="sidenav-content">
-      <button mat-button (click)="drawer.toggle()" class="sidenav-content--button">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
+      <div *ngIf="this.showCharts" >
+      <app-chart-dashboard></app-chart-dashboard>
+      </div>
     </div>
-  
   </mat-drawer-container>

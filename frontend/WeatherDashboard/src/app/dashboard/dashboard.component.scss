@@ -1,30 +1,49 @@
 .container {
-    width: 100vw;
-    height:100vh;
-    background-color: whitesmoke;
-  }
-  
-  .sidenav-content {
-    display: flex;
-    height: 100%;
-    // align-items: center;
-    // justify-content: center;
-  }
-  
-  .sidenav {
-    background-color: indigo;
-    color:white;
-    padding: 20px;
-  }
+  width: 100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+}
 
-  .sidenav-content--button{
-      color: indigo;
-      margin-left:0px;
-      height: 50px;
-      margin-top:40vh;
-  }
+.sidenav-content {
+  display: flex;
+  height: 100%;
+}
 
-  .weather-icon{
-      max-width: 50px;
-      max-height: 50px;
-  }
+.sidenav {
+  background-color: indigo;
+  padding: 20px;
+  color: white;   
+}
+
+.sidenav--element {
+  font-size:22px;
+  margin-top: 6px;
+  color: white;
+  padding:10px
+}
+
+.sidenav--element--selected {
+  font-size:22px;
+  margin-top: 6px;
+  padding:10px;
+  color: rgb(137, 230, 225);
+}
+
+
+.sidenav--title {
+  margin-top: 30px;
+  display: flex; 
+  margin-bottom: 50px;
+}
+
+.sidenav-content--button {
+  color: indigo;
+  margin-left: 0px;
+  height: 50px;
+  margin-top: 40vh;
+}
+
+.weather-icon {
+  max-width: 50px;
+  max-height: 50px;
+}
