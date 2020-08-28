@@ -1,26 +1,21 @@
 <mat-tab-group class="container">
-  <div *ngFor="let data of this.weatherData  | keyvalue">
-    <mat-tab label="hi">
-      {{data.key}} </mat-tab>
+  <div *ngFor="let key of this.tabs">
+    <mat-tab label={{key}}>  
+        <ngx-charts-bar-vertical class="chart"
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="this.weatherData.get(key)"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)"
+        >
+      </ngx-charts-bar-vertical>  
+      </mat-tab>
   </div>
-  <mat-tab label="First">
-  </mat-tab>
-  <mat-tab label="Second" >
-    <ngx-charts-bar-vertical class="chart"
-    [view]="view"
-    [scheme]="colorScheme"
-    [results]="saleData"
-    [gradient]="gradient"
-    [xAxis]="showXAxis"
-    [yAxis]="showYAxis"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
-    (select)="onSelect($event)">
-    </ngx-charts-bar-vertical>  
-  </mat-tab>
-  <mat-tab label="Third">
-  </mat-tab>
 </mat-tab-group>
 

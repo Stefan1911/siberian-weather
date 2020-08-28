@@ -2,12 +2,12 @@ import { Injectable } from "@angular/core";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Subject } from 'rxjs';
-import { weatherTypes } from '../models/weatherTypes.model';
+import { weatherTypes as WeatherTypes } from '../models/weatherTypes.model';
 
 export interface weatherDto{
-  wetherType: weatherTypes
+  weatherTypes: WeatherTypes
   dateTime : Date
-  data: number
+  value: number
 }
 
 @Injectable({
@@ -31,7 +31,7 @@ initializeWebSocketConnection() {
     this.stompClient.connect({}, function(frame) {
       that.stompClient.subscribe('/message', (message) => {
         if (message.body) {
-          that.WeatherSubject.next(message.body);
+          that.WeatherSubject.next(JSON.parse(message.body));
         }
       });
     });
