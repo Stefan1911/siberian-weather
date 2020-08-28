@@ -20,3 +20,5 @@ spring:
           destination: batchOutput
         ServiceRegistrationOutput:
           destination: registrationTopic
+        AnalyticsOutput:
+          destination: analyticsTopic

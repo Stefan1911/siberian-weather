@@ -32,7 +32,6 @@ public class NamingService implements INamingService {
 
   @Override
   public Optional<ServiceInfo> getFirstOrDefaultActuator() {
-    System.out.println(serviceInfoMap.get(ServiceType.ACTUATOR_SERVICE));
     Iterator<ServiceInfo> serviceInfoIterator = serviceInfoMap.get(ServiceType.ACTUATOR_SERVICE)
         .iterator();
     return serviceInfoIterator.hasNext() ? Optional.of(serviceInfoIterator.next()) : Optional.empty() ;
@@ -46,5 +45,12 @@ public class NamingService implements INamingService {
   @Override
   public void removeFromRegistry(ServiceInfo serviceInfo) {
     serviceInfoMap.get(serviceInfo.getServiceType()).remove(serviceInfo);
+  }
+
+  @Override
+  public Optional<ServiceInfo> getCommandService() {
+    Iterator<ServiceInfo> serviceInfoIterator = serviceInfoMap.get(ServiceType.COMMAND_SERVICE)
+        .iterator();
+    return serviceInfoIterator.hasNext() ? Optional.of(serviceInfoIterator.next()) : Optional.empty() ;
   }
 }
