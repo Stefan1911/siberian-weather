@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        ServiceRegistrationOutput:
+          destination: registrationTopic
