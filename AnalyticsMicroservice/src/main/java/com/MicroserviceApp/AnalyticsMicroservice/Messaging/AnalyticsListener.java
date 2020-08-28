@@ -2,12 +2,19 @@ package com.MicroserviceApp.AnalyticsMicroservice.Messaging;
 
 import com.MicroserviceApp.AnalyticsMicroservice.Analysator.Contracts.WeatherData;
 import com.MicroserviceApp.AnalyticsMicroservice.Analysator.EvaluatorFactory;
+import com.MicroserviceApp.AnalyticsMicroservice.Messaging.Models.Command;
+import com.MicroserviceApp.AnalyticsMicroservice.Messaging.Models.DTOs.CommandServiceInfoDTO;
 import com.MicroserviceApp.AnalyticsMicroservice.Messaging.Models.DTOs.WeatherDto;
 import com.MicroserviceApp.AnalyticsMicroservice.Messaging.Source.AnalyticsSource;
 import com.MicroserviceApp.AnalyticsMicroservice.Persistence.Contracts.IEventRepository;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 
 @EnableBinding(AnalyticsSource.class)
 public class AnalyticsListener {
@@ -16,6 +23,12 @@ public class AnalyticsListener {
   private EvaluatorFactory evaluatorFactory;
   @Autowired
   private IEventRepository eventRepository;
+  @Autowired
+  private RestTemplate restTemplate;
+  @Value("${app.naming.endpoint}")
+  private String namingEndpoint;
+  @Value("${app.command.endpoint}")
+  private String actuatorEndpoint;
 
   @StreamListener(AnalyticsSource.INPUT)
   public void log(WeatherDto weatherDto) {
@@ -34,7 +47,16 @@ public class AnalyticsListener {
   }
 
   private void executeActuator() {
-
+    try {
+      ResponseEntity<CommandServiceInfoDTO> response = restTemplate.getForEntity(namingEndpoint, CommandServiceInfoDTO.class);
+      Command commandRequest = Command.builder()
+          .commandName("alarm")
+          .commandParameters(Arrays.asList("10"))
+          .build();
+      restTemplate.postForLocation(response.getBody().getFullAddress() + actuatorEndpoint,commandRequest);
+    }catch (Exception exception) {
+      System.out.println("an error occurred while send a command" + exception.getMessage());
+    }
   }
 
   private void saveToDatabase(WeatherDto weatherDto){

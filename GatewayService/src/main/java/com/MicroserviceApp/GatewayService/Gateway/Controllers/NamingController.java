@@ -1,6 +1,7 @@
 package com.MicroserviceApp.GatewayService.Gateway.Controllers;
 
 import com.MicroserviceApp.GatewayService.Gateway.DTOs.ActuatorInfoDto;
+import com.MicroserviceApp.GatewayService.Gateway.DTOs.CommandServiceInfoDTO;
 import com.MicroserviceApp.GatewayService.NameingService.Contracts.INamingService;
 import com.MicroserviceApp.GatewayService.NameingService.Models.ServiceInfo;
 import com.MicroserviceApp.GatewayService.NameingService.Models.ServiceType;
@@ -38,5 +39,22 @@ public class NamingController {
   @GetMapping(value = "/services")
   public Map<ServiceType, Set<ServiceInfo>> getServices(){
     return this.namingService.getAllServices();
+  }
+
+  @GetMapping(value = "/commandService")
+  public ResponseEntity<CommandServiceInfoDTO> getCommandService(){
+    Optional<ServiceInfo> optionalServiceInfo = namingService.getCommandService();
+
+    CommandServiceInfoDTO infoDTO = optionalServiceInfo
+        .map(serviceInfo -> {
+          return CommandServiceInfoDTO.builder()
+              .ipAddress(serviceInfo.getIpAddress())
+              .port(serviceInfo.getPort())
+              .serviceType(serviceInfo.getServiceType())
+              .build();
+        })
+        .orElse(null);
+
+    return new ResponseEntity<CommandServiceInfoDTO>(infoDTO, optionalServiceInfo.isPresent() ?  HttpStatus.OK : HttpStatus.NOT_FOUND);
   }
 }

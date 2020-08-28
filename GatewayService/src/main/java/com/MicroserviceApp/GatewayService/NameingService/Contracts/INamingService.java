@@ -12,4 +12,5 @@ public interface INamingService {
   Optional<ServiceInfo> getFirstOrDefaultActuator();
   Map<ServiceType, Set<ServiceInfo>> getAllServices();
   void removeFromRegistry(ServiceInfo serviceInfo);
+  Optional<ServiceInfo> getCommandService();
 }

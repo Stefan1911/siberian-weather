@@ -2,11 +2,13 @@ package com.MicroserviceApp.AnalyticsMicroservice.Messaging.Models.DTOs;
 
 import java.util.Date;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @ToString
 @Getter @Setter
+@NoArgsConstructor
 public class WeatherDto {
 
   private WeatherTypes weatherTypes;
