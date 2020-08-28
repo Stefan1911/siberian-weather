@@ -2,6 +2,7 @@ package com.MicroserviceApp.AnalyticsMicroservice.Messaging;
 
 import com.MicroserviceApp.AnalyticsMicroservice.Analysator.Contracts.WeatherData;
 import com.MicroserviceApp.AnalyticsMicroservice.Analysator.EvaluatorFactory;
+import com.MicroserviceApp.AnalyticsMicroservice.Gateway.DTOs.EventDTO;
 import com.MicroserviceApp.AnalyticsMicroservice.Messaging.Models.Command;
 import com.MicroserviceApp.AnalyticsMicroservice.Messaging.Models.DTOs.CommandServiceInfoDTO;
 import com.MicroserviceApp.AnalyticsMicroservice.Messaging.Models.DTOs.WeatherDto;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -29,6 +31,8 @@ public class AnalyticsListener {
   private String namingEndpoint;
   @Value("${app.command.endpoint}")
   private String actuatorEndpoint;
+  @Autowired
+  private SimpMessagingTemplate messagingTemplate;
 
   @StreamListener(AnalyticsSource.INPUT)
   public void log(WeatherDto weatherDto) {
@@ -43,7 +47,12 @@ public class AnalyticsListener {
   }
 
   private void sendToDashboard(WeatherDto weatherDto) {
-
+    EventDTO eventDTO = EventDTO.builder()
+        .dateTime(weatherDto.getDateTime())
+        .value(weatherDto.getValue())
+        .weatherTypes(weatherDto.getWeatherTypes())
+        .build();
+    messagingTemplate.convertAndSend("/message",eventDTO);
   }
 
   private void executeActuator() {
