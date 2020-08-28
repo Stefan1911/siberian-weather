@@ -1,6 +1,7 @@
 <mat-tab-group class="container">
-  <div *ngFor="let data of this.weatherData">
-    <mat-tab label="g"> </mat-tab>
+  <div *ngFor="let data of this.weatherData  | keyvalue">
+    <mat-tab label="hi">
+      {{data.key}} </mat-tab>
   </div>
   <mat-tab label="First">
   </mat-tab>

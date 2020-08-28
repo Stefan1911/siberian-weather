@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketService, weatherDto } from '../services/websocket.service';
+import { weatherTypes } from '../models/weatherTypes.model';
 
-export interface WeatherData {
-  type: String;
-  data: { number: number; date: Date }[];
+export class WeatherData {
+  constructor(
+    public number: number, public date: Date){}
 }
 
 @Component({
@@ -12,7 +14,7 @@ export interface WeatherData {
 })
 export class ChartDashboardComponent implements OnInit {
   public saleData;
-  public weatherData: Array<WeatherData>;
+  public weatherData: Map<weatherTypes, WeatherData[]>;
   
   public view: any[] = [1100, 600];
   public showXAxis = true;
@@ -31,27 +33,26 @@ export class ChartDashboardComponent implements OnInit {
     '#ffabbc', '	#ff0033', '#aafce8','#f52f21','#f65606']
   };
   
-  constructor() {
-    this.weatherData = new Array<WeatherData>();
+  constructor( private readonly websocketService: WebsocketService) {
+    this.weatherData = new Map<weatherTypes, WeatherData[]>();
+
+    websocketService.WeatherSubject.subscribe((weather: weatherDto)=>{
+      if(this.weatherData.has(weather.wetherType))
+        {
+          this.weatherData.get(weather.wetherType).push(new WeatherData(weather.data, weather.dateTime));
+        }
+        else{
+          let weatherDataArray= new Array<WeatherData>();
+          weatherDataArray.push(new WeatherData(weather.data, weather.dateTime));
+          this.weatherData.set(weather.wetherType, weatherDataArray);
+        }   
+    })
+
     this.saleData = [
       { name: 'Mobiles', value: 105000 },
       { name: 'Laptop', value: 55000 },
       { name: 'AC', value: 15000 },
       { name: 'fbg', value: 150000 },
-      { name: 'fgb', value: 20000 }, { name: 'fgb', value: 105000 },
-      { name: 'Laptop', value: 55000 },
-      { name: 'AC', value: 15000 },
-      { name: 'Headset', value: 150000 },
-      { name: 'Fridge', value: 20000 }, { name: 'bfg', value: 105000 },
-      { name: 'Laptop', value: 55000 },
-      { name: 'AC', value: 15000 },
-      { name: 'Headset', value: 150000 },
-      { name: 'Fridge', value: 20000 }, { name: 'fgb', value: 105000 },
-      { name: 'Laptop', value: 55000 },
-      { name: 'AC', value: 15000 },
-      { name: 'Headset', value: 150000 },
-      { name: 'sd', value: 20000 }, { name: 'Mobifgbles', value: 105000 },
-      { name: 'sd', value: 55000 },
       { name: 'd', value: 15000 },
       { name: 'c', value: 150000 },
       { name: 'Fdcridge', value: 20000 }, { name: 'fgb', value: 105000 },

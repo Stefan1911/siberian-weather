@@ -2,16 +2,7 @@ import { Injectable } from "@angular/core";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Subject } from 'rxjs';
-
-export enum weatherTypes {
-  temperature,
-  humidity,
-  precipitation,
-  pressure,
-  visibility,
-  waterLevel,
-  wind
-}
+import { weatherTypes } from '../models/weatherTypes.model';
 
 export interface weatherDto{
   wetherType: weatherTypes
@@ -23,11 +14,9 @@ export interface weatherDto{
   providedIn: 'root',
 })
 export class WebsocketService {
-  
-
   public WeatherSubject : Subject<weatherDto>
-
   public stompClient;
+  
   constructor() {
 
     this.WeatherSubject = new Subject();

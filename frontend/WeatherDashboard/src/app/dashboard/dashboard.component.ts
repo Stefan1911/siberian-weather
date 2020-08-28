@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { map, shareReplay } from "rxjs/operators";
+import { WebsocketService, weatherDto } from '../services/websocket.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,13 +14,11 @@ export class DashboardComponent implements OnInit {
   public showCharts:boolean;
   public showMicroservices:boolean;
   public showNotifications:boolean;
-  
 
-
-
-  constructor( ) {
+  constructor() {
     this.disableAll();
-    this.title="Siberia weather" 
+    this.title="Siberia weather";
+   
    }
 
    public disableAll():void{
