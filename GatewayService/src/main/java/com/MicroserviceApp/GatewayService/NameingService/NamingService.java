@@ -37,4 +37,14 @@ public class NamingService implements INamingService {
         .iterator();
     return serviceInfoIterator.hasNext() ? Optional.of(serviceInfoIterator.next()) : Optional.empty() ;
   }
+
+  @Override
+  public Map<ServiceType, Set<ServiceInfo>> getAllServices() {
+    return serviceInfoMap;
+  }
+
+  @Override
+  public void removeFromRegistry(ServiceInfo serviceInfo) {
+    serviceInfoMap.get(serviceInfo.getServiceType()).remove(serviceInfo);
+  }
 }

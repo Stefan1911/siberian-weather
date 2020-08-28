@@ -16,4 +16,9 @@ public class ServiceInfo {
   private String ipAddress;
   private int port;
   private ActuatorType actuatorType;
+  private WeatherAttributeType weatherAttributeType;
+
+  public String  getFullAddress(){
+    return "http://" + ipAddress  + ":" + port + "/";
+  }
 }
