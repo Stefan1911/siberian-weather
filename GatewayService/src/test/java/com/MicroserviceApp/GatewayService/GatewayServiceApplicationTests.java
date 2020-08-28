@@ -14,8 +14,8 @@ class GatewayServiceApplicationTests {
 	@Test
 	void contextLoads() {
 
-		ServiceInfo serviceInfo = new ServiceInfo(ServiceType.COMMAND_SERVICE,"my addres",1234, null	);
-		ServiceInfo serviceInfo2 = new ServiceInfo(ServiceType.COMMAND_SERVICE,"my addres",1234,null	);
+		ServiceInfo serviceInfo = new ServiceInfo(ServiceType.COMMAND_SERVICE,"my addres",1234, null ,null	);
+		ServiceInfo serviceInfo2 = new ServiceInfo(ServiceType.COMMAND_SERVICE,"my addres",1234,null,null	);
 
 		Set<ServiceInfo> serviceInfoSet = new HashSet<>();
 

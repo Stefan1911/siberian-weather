@@ -25,6 +25,8 @@ public class weatherRunner implements ApplicationRunner {
     private int servicePort;
     @Value("${server.ip_address}")
     private String serviceIpAddress;
+    @Value("${collector.type}")
+    WeatherAttributeType weatherAttributeType;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -37,16 +39,17 @@ public class weatherRunner implements ApplicationRunner {
     }
 
     private void registerService(){
-        registerServiceAs(ServiceType.DEVICE_SERVICE,null);
-        registerServiceAs(ServiceType.ACTUATOR_SERVICE,ActuatorType.SIREN);
+        registerServiceAs(ServiceType.DEVICE_SERVICE,null,weatherAttributeType);
+        registerServiceAs(ServiceType.ACTUATOR_SERVICE,ActuatorType.SIREN,null);
     }
 
-    private void registerServiceAs(ServiceType serviceType, ActuatorType actuatorType){
+    private void registerServiceAs(ServiceType serviceType, ActuatorType actuatorType,WeatherAttributeType weatherAttributeType){
         ServiceInfo serviceInfo = ServiceInfo.builder()
             .ipAddress(serviceIpAddress)
             .port(servicePort)
             .serviceType(serviceType)
             .actuatorType(actuatorType)
+            .weatherAttributeType(weatherAttributeType)
             .build();
 
         serviceRegistrationChannelProvider.getChanel().send(MessageBuilder.withPayload(serviceInfo).build());

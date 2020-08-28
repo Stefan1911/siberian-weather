@@ -3,7 +3,10 @@ package com.MicroserviceApp.GatewayService.Gateway.Controllers;
 import com.MicroserviceApp.GatewayService.Gateway.DTOs.ActuatorInfoDto;
 import com.MicroserviceApp.GatewayService.NameingService.Contracts.INamingService;
 import com.MicroserviceApp.GatewayService.NameingService.Models.ServiceInfo;
+import com.MicroserviceApp.GatewayService.NameingService.Models.ServiceType;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +21,7 @@ public class NamingController {
   @Autowired
   private INamingService namingService;
 
-  @GetMapping
+  @GetMapping(value = "/actuatorInfo")
   public ResponseEntity<ActuatorInfoDto> getActuatorInfo(){
       Optional<ServiceInfo> optionalServiceInfo = namingService.getFirstOrDefaultActuator();
 
@@ -31,5 +34,9 @@ public class NamingController {
               .build())
           .orElse(null);
     return new ResponseEntity<>(responseBody, optionalServiceInfo.isPresent() ?  HttpStatus.OK : HttpStatus.NOT_FOUND);
+  }
+  @GetMapping(value = "/services")
+  public Map<ServiceType, Set<ServiceInfo>> getServices(){
+    return this.namingService.getAllServices();
   }
 }
