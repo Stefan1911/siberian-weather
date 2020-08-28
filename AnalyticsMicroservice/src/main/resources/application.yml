@@ -4,3 +4,5 @@ spring:
       bindings:
         ServiceRegistrationOutput:
           destination: registrationTopic
+        AnalyticsInput:
+          destination: analyticsTopic
