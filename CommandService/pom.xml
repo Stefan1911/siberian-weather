@@ -18,7 +18,7 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR7</spring-cloud.version>
 		<docker.image.name>command_service</docker.image.name>
-		<docker.image.prefix>soa</docker.image.prefix>
+		<docker.image.prefix>dandolo</docker.image.prefix>
 	</properties>
 
 	<dependencies>

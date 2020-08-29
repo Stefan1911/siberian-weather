@@ -17,7 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<docker.image.name>data_service</docker.image.name>
-		<docker.image.prefix>soa</docker.image.prefix>
+		<docker.image.prefix>dandolo</docker.image.prefix>
 	</properties>
 
 	<dependencies>
