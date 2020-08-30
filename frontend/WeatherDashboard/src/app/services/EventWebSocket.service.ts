@@ -3,21 +3,14 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Subject } from 'rxjs';
 import { JsonPipe } from '@angular/common';
+import { WeatherTypes } from '../models/weatherTypes.model';
+import { colorSets } from '@swimlane/ngx-charts';
 
-export enum weatherTypes {
-  temperature,
-  humidity,
-  precipitation,
-  pressure,
-  visibility,
-  waterLevel,
-  wind
-}
 
 export interface EventDto{
-  wetherType: weatherTypes
+  weatherTypes: WeatherTypes
   dateTime : Date
-  data: number
+  value: number
 }
 
 @Injectable({

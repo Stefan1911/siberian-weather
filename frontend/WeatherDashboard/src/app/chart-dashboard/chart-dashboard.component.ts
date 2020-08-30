@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WebsocketService, weatherDto } from '../services/websocket.service';
-import { weatherTypes } from '../models/weatherTypes.model';
+import { WeatherTypes } from '../models/weatherTypes.model';
 import { Subscription, throwError } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
@@ -17,8 +17,8 @@ export class WeatherData {
 export class ChartDashboardComponent implements OnInit , OnDestroy{
 
   public saleData;
-  public weatherData: Map<weatherTypes, { name: String, value: number }[]>;
-  public tabs: weatherTypes[];
+  public weatherData: Map<WeatherTypes, { name: String, value: number }[]>;
+  public tabs: WeatherTypes[];
   
   public view: any[] = [1100, 600];
   public showXAxis = true;
@@ -31,7 +31,7 @@ export class ChartDashboardComponent implements OnInit , OnDestroy{
   public yAxisLabel = 'Value';
   public timeline = true;
   private subscription:Subscription;
-  public type : weatherTypes = weatherTypes.temperature
+  public type : WeatherTypes = WeatherTypes.temperature
   public realtimeDataConfig = {
     animationDuration: 600,
     numPoints: 20
@@ -49,8 +49,8 @@ export class ChartDashboardComponent implements OnInit , OnDestroy{
   }
 
   constructor( private datepipe: DatePipe, private readonly websocketService: WebsocketService) {
-    this.weatherData = new Map<weatherTypes, { name: String, value: number }[]>();
-    this.tabs= new Array<weatherTypes>();
+    this.weatherData = new Map<WeatherTypes, { name: String, value: number }[]>();
+    this.tabs= new Array<WeatherTypes>();
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

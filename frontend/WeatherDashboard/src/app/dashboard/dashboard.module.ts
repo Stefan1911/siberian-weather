@@ -9,6 +9,7 @@ import {MatListModule} from '@angular/material/list';
 import { ChartDashboardModule } from '../chart-dashboard/chart-dashboard.module';
 import { MicroservicesModule } from '../microservices/microservices.module';
 import { NotificationsModule } from '../notifications/notifications.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -21,7 +22,8 @@ import { NotificationsModule } from '../notifications/notifications.module';
     MatListModule,
     MicroservicesModule,
     NotificationsModule,
-    ChartDashboardModule   
+    ChartDashboardModule,
+    HttpClientModule  
   ], 
   exports:[DashboardComponent]
 })
