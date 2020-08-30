@@ -1,3 +1,21 @@
-<ngx-charts-pie-grid 
-  [results]="saleData" >
-</ngx-charts-pie-grid>
+<mat-tab-group class="container">
+  <div *ngFor="let key of this.tabs">
+    <mat-tab label={{key}}>  
+        <ngx-charts-bar-vertical class="chart"
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="this.weatherData.get(key)"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)"
+        >
+      </ngx-charts-bar-vertical>  
+      </mat-tab>
+  </div>
+</mat-tab-group>
+
