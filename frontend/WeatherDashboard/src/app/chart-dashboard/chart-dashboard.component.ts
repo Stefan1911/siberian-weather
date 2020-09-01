@@ -23,6 +23,7 @@ export class ChartDashboardComponent implements OnInit , OnDestroy{
   public view: any[] = [1100, 600];
   public showXAxis = true;
   public showYAxis = true;
+  
   public gradient = false;
   public showLegend = true;
   public showXAxisLabel = true;

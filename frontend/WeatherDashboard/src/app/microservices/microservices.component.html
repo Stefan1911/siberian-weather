@@ -1,17 +1,33 @@
-<mat-accordion class="container">
-  <div *ngFor="let microservice of microservices">
-
-  </div>
-    <mat-expansion-panel class="panel">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Microservice 1
-        </mat-panel-title>
-        <mat-panel-description>
-          Open to see all microservices
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
-    </mat-expansion-panel>
-
-  </mat-accordion>
+<div class='container'>
+  <mat-accordion >
+    <div *ngFor="let microservice of this.microservices | keyvalue">
+      <mat-expansion-panel class="panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title class='title'>
+           {{microservice?.key}} 
+          </mat-panel-title>  
+          <mat-panel-description>
+            Count:{{microservice?.value.length}} 
+           </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngFor="let service of  microservice?.value" class='informations'>   
+         <div *ngIf="service.actuatorType">
+          Actuator Type: {{service?.actuatorType}}
+        </div> 
+          <div *ngIf="service.weatherAttributeType">
+            Weather Attribute Type: {{service?.weatherAttributeType}}
+         </div> 
+          <div >
+              Port: {{service?.port}}
+          </div>   
+          <div>
+            Address: {{service?.fullAddress}}
+        </div>  
+          <hr class='newRow'>
+        </div>
+      </mat-expansion-panel>
+  
+    </div>
+    
+    </mat-accordion>
+</div>
