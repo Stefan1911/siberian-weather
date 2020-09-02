@@ -27,6 +27,7 @@
   margin-top: 6px;
   padding:10px;
   color: rgb(137, 230, 225);
+  color:aqua; 
 }
 
 
@@ -50,15 +51,21 @@
 }
 
 .background-image{
- max-height: 100%;
- margin-left:15%;
+ height: 65%;
+ margin-left:190px;
+ margin-top: 60px;
+//  clip-path: inset(80px 45px);
 }
 
 .container--title{
-  font-size:50px;
-  margin-top:40px; 
-  margin-left: 40%; 
-  margin-bottom: 10px;
-  color: rgb(89, 145, 197);
+  font-size:75px;
+  padding-top:70px; 
+  margin-left: 25%; 
+  background: -webkit-linear-gradient(90deg, rgb(46, 6, 63) 0%, rgb(122, 40, 170) 30%,rgb(103, 130, 248) 55% ,aqua 100%);  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  height: 85px;
   font-weight: 600;
+  min-width: 900px;
+  font-family: 'Times New Roman', Times, serif;
 }

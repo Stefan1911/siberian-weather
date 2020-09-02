@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Subject } from 'rxjs';
-import { weatherTypes as WeatherTypes } from '../models/weatherTypes.model';
+import { WeatherTypes as WeatherTypes } from '../models/weatherTypes.model';
 
 export interface weatherDto{
   weatherTypes: WeatherTypes

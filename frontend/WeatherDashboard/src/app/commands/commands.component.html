@@ -1,0 +1,80 @@
+<div class='container'>
+    <mat-card class="commands_container">
+        <mat-card-header>
+            <mat-card-title class="title">
+                Review of commands
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class='informations'> Actuator type: {{ this.actuatorType}}</div>
+            <div class='informations'>  Command definiton list:</div>
+            <mat-accordion >
+                <div *ngFor="let command of this.commandDefinitionList">
+                    <mat-expansion-panel class="panel">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title >
+                              {{command?.commandName}}
+                          </mat-panel-title>  
+                          <mat-panel-description>
+                            {{command?.description}}
+                           </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div> Arguments:</div>
+                        <div *ngFor="let argument of command?.arguments" >
+                            <hr class='newRow'>
+                            <div> Min Value: {{argument?.minValue}}</div>
+                            <div> Max Value: {{argument?.maxValue}}</div>
+                        </div>
+                      </mat-expansion-panel>
+                </div>   
+                </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+        
+    <mat-card class="commands_container">
+        <mat-card-header>
+            <mat-card-title class="title">
+               Edit commands
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="fill" class="actuator_type--select">
+                <mat-label>Select actuator type</mat-label>
+                <mat-select [(value)]="selected">
+                    <div *ngFor="let actuator of this.commandDefinitionList" >
+                        <mat-option value={{actuator?.commandName}}>{{actuator?.commandName}}</mat-option>
+                    </div>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-card-header>
+                <mat-card-title>
+                    Enter arguments for selected actuator type:                      
+                   </mat-card-title>   
+              </mat-card-header>
+
+              <button (click)='onAdd()' mat-flat-button style="background-color: rgb(108, 32, 163); color:white; margin-left: 15px;">
+                <mat-icon>add</mat-icon> Add </button> 
+                <button (click)='onRemove()' mat-flat-button style="background-color: rgb(108, 32, 163); color:white; margin-left: 15px;">
+                    <mat-icon>remove</mat-icon> Remove </button>  
+              <mat-card class='arguments--card' >
+
+                <mat-card-content>
+                    <div *ngFor="let count of [].constructor(this.numOfArguments)">
+                        <mat-form-field >
+                            <mat-label>Min value</mat-label>
+                            <input matInput (input)="addMin($event.target.value)" type="number" min="1" max="10">
+                          </mat-form-field>
+                          <mat-form-field>
+                            <mat-label>Max value</mat-label>
+                            <input matInput (input)="addMax($event.target.value)" type="number" min="1" max="10">
+                          </mat-form-field>                                   
+                    </div>
+                    </mat-card-content>
+            </mat-card>
+            <button (click)='onSave()' mat-flat-button style="background-color: rgb(108, 32, 163); color:white; margin-top: 30px; margin-left:80%">
+                <mat-icon>save_alt</mat-icon> Save </button>                                  
+            </mat-card-content>
+    </mat-card>
+        
+</div>

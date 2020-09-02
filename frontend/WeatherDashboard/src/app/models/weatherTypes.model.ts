@@ -1,5 +1,4 @@
-
-export enum weatherTypes {
+export enum WeatherTypes {
     temperature,
     humidity,
     precipitation,
