@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "0a8ae53c-b70d-4a63-832a-4505dabf2430",
+		"name": "SOA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GatewayService",
+			"item": [
+				{
+					"name": "get all running services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1950/naming/services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1950",
+							"path": [
+								"naming",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCommandServcice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1950/naming/actuatorInfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1950",
+							"path": [
+								"naming",
+								"actuatorInfo"
+							]
+						},
+						"description": "getting the addres of one acctuator, this is usefule fore the command service"
+					},
+					"response": []
+				},
+				{
+					"name": "getCommandService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1950/naming/commandService",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1950",
+							"path": [
+								"naming",
+								"commandService"
+							]
+						},
+						"description": "gets the addres and prot of the command service. gets called by the analytics service"
+					},
+					"response": []
+				},
+				{
+					"name": "getEvents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1950/naming/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1950",
+							"path": [
+								"naming",
+								"events"
+							]
+						},
+						"description": "gets all events from the analytics service"
+					},
+					"response": []
+				},
+				{
+					"name": "get all supported commands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1950/naming/command",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1950",
+							"path": [
+								"naming",
+								"command"
+							]
+						},
+						"description": "gets alll the commands the actuators of the system can execute\n"
+					},
+					"response": []
+				},
+				{
+					"name": "executeCommand",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commandName\" : \"alarm\",\n    \"commandParameters\" : [\"2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1950/naming/command",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1950",
+							"path": [
+								"naming",
+								"command"
+							]
+						},
+						"description": "executes a command on all the services"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DeviceServis",
+			"item": [
+				{
+					"name": "SensorMetaData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1910/SensorMetaData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1910",
+							"path": [
+								"SensorMetaData"
+							]
+						},
+						"description": "gets the metadata about the senzor"
+					},
+					"response": []
+				},
+				{
+					"name": "change senzor sattings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"readRate\" : 2000,\n    \"batchSize\" : 6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1910/SensorMetaData",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1910",
+							"path": [
+								"SensorMetaData"
+							]
+						},
+						"description": "changes the settings of the senzor"
+					},
+					"response": []
+				},
+				{
+					"name": "pingDeviceService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1911/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1911",
+							"path": [
+								"ping"
+							]
+						},
+						"description": "pings one of the device services to check if its running"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "AnalyticsServic",
+			"item": [
+				{
+					"name": "getEvents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1930/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1930",
+							"path": [
+								"event"
+							]
+						},
+						"description": "gets all the events"
+					},
+					"response": []
+				},
+				{
+					"name": "pingTheAnalyticsService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1930/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1930",
+							"path": [
+								"ping"
+							]
+						},
+						"description": "pings the analyitics service to see if its up and running"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DataService",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1921/weather/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1921",
+							"path": [
+								"weather",
+								"findAll"
+							]
+						},
+						"description": "getts all the weather data from the database"
+					},
+					"response": []
+				},
+				{
+					"name": "ping the DataService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1921/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1921",
+							"path": [
+								"ping"
+							]
+						},
+						"description": "pings the data service to check it its up and running"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CommandService",
+			"item": [
+				{
+					"name": "pingCommandService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1940/ping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1940",
+							"path": [
+								"ping"
+							]
+						},
+						"description": "pings the command service to check its healt"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCommands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1940/command",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1940",
+							"path": [
+								"command"
+							]
+						},
+						"description": "gets all the supported commands"
+					},
+					"response": []
+				},
+				{
+					"name": "execute one command",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commandName\" : \"alarm\",\n    \"commandParameters\" : [\"2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1940/command",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1940",
+							"path": [
+								"command"
+							]
+						},
+						"description": "executing one command on all the actuators\n"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
