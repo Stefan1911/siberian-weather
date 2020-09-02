@@ -1,0 +1,82 @@
+.commands_container{
+    box-shadow: 15px 11px 55px -15px rgba(119, 20, 119, 0.599);
+    margin:2%;
+    border-radius: 8px;
+    width: 50%;
+    background-color: rgb(248, 248, 249);
+}
+
+.container{
+    padding: 7%;
+    width: 72vw;
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.title{
+    font-size: 25px;
+    font-weight: 550;
+    color: indigo;
+    margin-left: 160px;
+    margin-top: 30px;
+    padding-bottom: 40px;
+}
+
+.mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+.panel{
+    padding-top: 10px;
+    margin-top: 40px;
+}
+
+.newRow{
+  border: 1px solid aqua;
+}
+
+.informations{
+  font-size: 17px;
+  margin:10px;
+  font-weight: 500;
+}
+
+.actuator_type--select{
+    width: 100%;
+}
+
+.arguments--card{
+    overflow-y: scroll;
+    margin-top:15px;
+    max-height: 320px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  ::ng-deep .snackbar{
+      color:white !important;
+      font-weight: 500;
+      background-color: rgb(152, 32, 238);
+  }
+
+  ::ng-deep .mat-simple-snackbar {
+    display: flex; 
+    font-size: 18px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }

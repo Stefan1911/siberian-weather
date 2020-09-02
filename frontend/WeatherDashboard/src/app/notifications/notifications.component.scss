@@ -1,12 +1,27 @@
 .table{
     margin-top: 40px;
-    width:80vw;
-    height: 90vh;
+    width:78vw;
+    height: 80vh;
 }
 
 .title{
     color:indigo;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 550;
     margin:10px;
+    padding-bottom: 20px;
+}
+
+.table_row---name{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 500;
+    color: black;
+}
+
+.card{
+    margin:3%;
+    width:78vw;
+    border-radius: 8px;
+    box-shadow: 15px 11px 55px -15px rgba(143, 53, 143, 0.7);
 }

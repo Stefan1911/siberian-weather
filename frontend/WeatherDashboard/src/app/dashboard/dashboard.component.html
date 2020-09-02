@@ -25,14 +25,21 @@
             <mat-icon>list_alt</mat-icon>
             <span style="margin-left:10px">Microservices</span>
           </a>
-      </div>
+       </div>
+        <div (click)="this.viewCommands()">
+        <a mat-list-item  
+         [ngClass]="{'sidenav--element': !this.showCommands, 'sidenav--element--selected': this.showCommands}" >
+          <mat-icon>edit</mat-icon>
+          <span style="margin-left:10px">Commands</span>
+        </a>
+       </div>
         </mat-nav-list>
     </mat-drawer>
     <div class="sidenav-content">
-      <div *ngIf="!this.showCharts && !this.showMicroservices && !this.showNotifications">
+      <div *ngIf="!this.showCharts && !this.showMicroservices && !this.showNotifications && !this.showCommands">
         <div class="container--title">Siberia weather station</div>
         <img class ="background-image"
-          src="https://i.pinimg.com/originals/65/89/7e/65897eb2d9762cb222576fd2d49e4d56.png">
+          src="https://i.pinimg.com/originals/ff/3f/9a/ff3f9ac4bab56e6efe04008fced5b53e.jpg">
       </div>
       <div *ngIf="this.showCharts">
       <app-chart-dashboard></app-chart-dashboard>
@@ -42,6 +49,9 @@
       </div>
       <div *ngIf="this.showNotifications">
         <app-notifications></app-notifications>
+      </div>
+      <div *ngIf="this.showCommands">
+        <app-commands></app-commands>
       </div>
     </div>
   </mat-drawer-container>

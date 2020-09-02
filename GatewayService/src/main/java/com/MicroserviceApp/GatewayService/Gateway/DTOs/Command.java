@@ -10,5 +10,4 @@ import lombok.ToString;
 public class Command {
   private String commandName;
   private List<String> commandParameters;
-
 }

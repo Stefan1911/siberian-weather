@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   public showCharts:boolean;
   public showMicroservices:boolean;
   public showNotifications:boolean;
+  public showCommands:boolean;
 
   constructor() {
     this.disableAll();
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
     this.showCharts=false;
     this.showMicroservices=false;
     this.showNotifications=false;
+    this.showCommands=false;
    }
 
    public viewCharts():void {
@@ -40,6 +42,11 @@ export class DashboardComponent implements OnInit {
   public viewNotifications():void {
     this.disableAll();
     this.showNotifications=!this.showNotifications;
+  }
+
+  public viewCommands():void {
+    this.disableAll();
+    this.showCommands=!this.showCommands;
   }
 
   ngOnInit(): void {
